@@ -38,6 +38,11 @@ public class HoteConnexionInterface extends javax.swing.JFrame {
         labelNom.setText("Nom:");
 
         boutonOk.setText("OK");
+        boutonOk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boutonOkActionPerformed(evt);
+            }
+        });
 
         boutonQuitter.setText("QUITTER");
 
@@ -74,6 +79,18 @@ public class HoteConnexionInterface extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void boutonOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutonOkActionPerformed
+        Boolean valide;
+        
+        Hote hote = new Hote();
+        valide = hote.connect(textFieldNom.getText());
+
+        if (valide.equals(true)){
+            HoteInterface hoteI = new HoteInterface();
+            hoteI.setVisible(true);
+        }
+    }//GEN-LAST:event_boutonOkActionPerformed
 
     /**
      * @param args the command line arguments
