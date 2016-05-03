@@ -5,12 +5,14 @@
  */
 package client;
 
+import java.net.Socket;
+
 /**
  *
  * @author Baptiste
  */
 public class ClientConnexionInterface extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form ClientConnexionInterface
      */
@@ -80,10 +82,16 @@ public class ClientConnexionInterface extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonOkActionPerformed
+
+        Boolean connexionAccepte;
         
-        String nom;
-        nom = TextFieldNom.getText();
+        Client client = new Client();
+        connexionAccepte = client.connect(TextFieldNom.getText());
         
+        if (connexionAccepte.equals(false) ) {
+            TextFieldNom.setText("Connexion refusée");
+        }
+               
         
     }//GEN-LAST:event_ButtonOkActionPerformed
 
