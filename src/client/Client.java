@@ -31,14 +31,14 @@ public class Client {
         
 //        Client.port=Integer.parseInt(args[0]);
        
-        ClientConnexionInterface connexionInterface = new ClientConnexionInterface();
+        ClientConnexionInterface connexionInterface = new ClientConnexionInterface(Integer.parseInt(args[0]));
         connexionInterface.setVisible(true);
     }
     
-    public boolean connect(String Nom){
+    public boolean connect(String Nom, int port){
        
         try {
-            sck = new Socket("localhost", 9999);
+            sck = new Socket("localhost", port);
             System.out.println("Connexion etabli");
             
             BufferedReader plec = new BufferedReader(new InputStreamReader(sck.getInputStream())); 

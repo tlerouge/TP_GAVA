@@ -39,7 +39,7 @@ public class ClientListeReservationInterface extends javax.swing.JFrame {
         ButtonReservation = new javax.swing.JButton();
         ButtonQuitter = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         TextAreaReservation.setColumns(20);
         TextAreaReservation.setRows(5);

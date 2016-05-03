@@ -38,13 +38,18 @@ public class HoteInterface extends javax.swing.JFrame {
         boutonDate = new javax.swing.JButton();
         boutonQuitter = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
         boutonDate.setText("DATE");
+        boutonDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boutonDateActionPerformed(evt);
+            }
+        });
 
         boutonQuitter.setText("QUITTER");
         boutonQuitter.addActionListener(new java.awt.event.ActionListener() {
@@ -90,6 +95,10 @@ public class HoteInterface extends javax.swing.JFrame {
             Logger.getLogger(HoteInterface.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_boutonQuitterActionPerformed
+
+    private void boutonDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutonDateActionPerformed
+        HoteDateInterface hotedate = new HoteDateInterface();
+    }//GEN-LAST:event_boutonDateActionPerformed
 
     /**
      * @param args the command line arguments
