@@ -8,9 +8,11 @@ import java.util.logging.*;
 public class ConnexionTCP extends ServeurThreadTCP {
     
     public ArrayList<String> noms = new ArrayList<String>();
-
+    public ServeurInterface s;
+    
     public ConnexionTCP(int port) throws IOException {
         super(port);
+        s = new ServeurInterface();
     }
     
     public Runnable fabriqueSession(final Socket sck) {
@@ -29,8 +31,10 @@ public class ConnexionTCP extends ServeurThreadTCP {
                     if (noms.contains(clientSentence)) {
 //                        outToClient.writeBytes("0");
                         outToClient.println("0");
+                        
                     } else {
                         noms.add(clientSentence);
+                        s.ajouterText(clientSentence);
                         outToClient.println("1");
 //                        outToClient.writeBytes("1");
                     }
@@ -45,8 +49,6 @@ public class ConnexionTCP extends ServeurThreadTCP {
         //ConnexionTCP c = new ConnexionTCP(Integer.parseInt(args[0]));
         ConnexionTCP c = new ConnexionTCP(9999);
         c.go();
-        ServeurInterface i = new ServeurInterface();
-        i.setVisible(true);
               
     }
 
