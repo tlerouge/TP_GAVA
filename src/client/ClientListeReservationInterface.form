@@ -28,7 +28,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jScrollPane1" alignment="0" pref="380" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="ButtonRservation" min="-2" max="-2" attributes="0"/>
+                      <Component id="ButtonReservation" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="ButtonQuitter" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -44,7 +44,7 @@
               <Component id="jScrollPane1" min="-2" pref="242" max="-2" attributes="0"/>
               <EmptySpace pref="13" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="ButtonRservation" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ButtonReservation" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="ButtonQuitter" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -68,15 +68,21 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="ButtonRservation">
+    <Component class="javax.swing.JButton" name="ButtonReservation">
       <Properties>
         <Property name="text" type="java.lang.String" value="R&#xe9;servation"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonReservationActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="ButtonQuitter">
       <Properties>
         <Property name="text" type="java.lang.String" value="Quitter"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonQuitterActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

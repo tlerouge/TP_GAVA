@@ -21,9 +21,8 @@ import java.util.logging.Logger;
 public class Client {
 
     private Socket sck;
-    static int port;
-    
-    
+    boolean sckFerme;   // flag pour savoir si la socket a déjà été fermé
+        
     
     /**
      * @param args the command line arguments
@@ -31,7 +30,7 @@ public class Client {
     public static void main(String[] args) {
         
 //        Client.port=Integer.parseInt(args[0]);
-        
+       
         ClientConnexionInterface connexionInterface = new ClientConnexionInterface();
         connexionInterface.setVisible(true);
     }
@@ -54,6 +53,7 @@ public class Client {
             pred.close();
             
             if (retour.equals("1")){
+                sckFerme=false;
                 System.out.println("Connexion accepté");
                 return true;
             }
@@ -67,10 +67,14 @@ public class Client {
         } 
     }
         
-    public void disconnect () throws IOException{
-
-        sck.close();
-        System.out.println("Connexion fermé");
+    public void disconnect() throws IOException{
+        
+        if (sckFerme == false){
+            sck.close();
+            sckFerme=true;
+            System.out.println("Connexion fermé");
+        }
+        else System.out.println("Connexion déjà fermé");
     }
     
 }
