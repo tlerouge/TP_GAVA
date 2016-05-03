@@ -46,8 +46,8 @@ public class ConnexionTCP extends ServeurThreadTCP {
     }
     
     public static void main(String args[]) throws Exception {
-        //ConnexionTCP c = new ConnexionTCP(Integer.parseInt(args[0]));
-        ConnexionTCP c = new ConnexionTCP(9999);
+        ConnexionTCP c = new ConnexionTCP(Integer.parseInt(args[0]));
+        //ConnexionTCP c = new ConnexionTCP(9999);
         c.go();
               
     }
