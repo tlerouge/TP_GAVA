@@ -16,15 +16,16 @@ public class Hote {
     public static void main(String[] args) {
         
         
-        HoteConnexionInterface h = new HoteConnexionInterface();
+        HoteConnexionInterface h = new HoteConnexionInterface(Integer.parseInt(args[0]));
         h.setVisible(true);
         
     }
     
-    public boolean connect(String Nom){
+    public boolean connect(String Nom, int port){
        
         try {
-            socket = new Socket("localhost", 9999);
+//            socket = new Socket("localhost", 9999);
+            socket = new Socket("localhost", port);
             System.out.println("Communication établie");
             
             BufferedReader plec = new BufferedReader(new InputStreamReader(socket.getInputStream())); 

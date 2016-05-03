@@ -11,10 +11,12 @@ package hote;
  */
 public class HoteConnexionInterface extends javax.swing.JFrame {
     Hote hote;
+    int port;
     /**
      * Creates new form HoteConnexionInterface
      */
-    public HoteConnexionInterface() {
+    public HoteConnexionInterface(int port) {
+        this.port = port;
         this.setTitle("Hote Connexion");
         initComponents();
     }
@@ -84,7 +86,7 @@ public class HoteConnexionInterface extends javax.swing.JFrame {
         Boolean valide;
         
         hote = new Hote();
-        valide = hote.connect(textFieldNom.getText());
+        valide = hote.connect(textFieldNom.getText(), port);
 
         if (valide.equals(true)){
             HoteInterface hoteI = new HoteInterface(hote);

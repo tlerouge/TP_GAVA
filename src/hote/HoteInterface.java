@@ -84,7 +84,7 @@ public class HoteInterface extends javax.swing.JFrame {
 
     private void boutonQuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutonQuitterActionPerformed
         try {
-            hote1.disconnect();
+            hote1.disconnect(); 
             this.dispose();
         } catch (IOException ex) {
             Logger.getLogger(HoteInterface.class.getName()).log(Level.SEVERE, null, ex);
