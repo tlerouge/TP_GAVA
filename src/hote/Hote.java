@@ -54,7 +54,6 @@ public class Hote {
     }
         
     public void disconnect () throws IOException{
-
         socket.close();
         System.out.println("Connexion fermé");
     }

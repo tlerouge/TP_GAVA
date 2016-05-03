@@ -5,16 +5,21 @@
  */
 package hote;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Tony
  */
 public class HoteInterface extends javax.swing.JFrame {
-
+    Hote hote1;
     /**
      * Creates new form HoteInterface
      */
-    public HoteInterface() {
+    public HoteInterface(Hote hote) {
+        this.hote1 = hote;
         this.setTitle("Hote");
         initComponents();
     }
@@ -42,6 +47,11 @@ public class HoteInterface extends javax.swing.JFrame {
         boutonDate.setText("DATE");
 
         boutonQuitter.setText("QUITTER");
+        boutonQuitter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boutonQuitterActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -71,6 +81,15 @@ public class HoteInterface extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void boutonQuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutonQuitterActionPerformed
+        try {
+            hote1.disconnect();
+            this.dispose();
+        } catch (IOException ex) {
+            Logger.getLogger(HoteInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_boutonQuitterActionPerformed
 
     /**
      * @param args the command line arguments

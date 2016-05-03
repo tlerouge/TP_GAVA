@@ -10,7 +10,7 @@ package hote;
  * @author Tony
  */
 public class HoteConnexionInterface extends javax.swing.JFrame {
-
+    Hote hote;
     /**
      * Creates new form HoteConnexionInterface
      */
@@ -83,11 +83,11 @@ public class HoteConnexionInterface extends javax.swing.JFrame {
     private void boutonOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutonOkActionPerformed
         Boolean valide;
         
-        Hote hote = new Hote();
+        hote = new Hote();
         valide = hote.connect(textFieldNom.getText());
 
         if (valide.equals(true)){
-            HoteInterface hoteI = new HoteInterface();
+            HoteInterface hoteI = new HoteInterface(hote);
             hoteI.setVisible(true);
         }
     }//GEN-LAST:event_boutonOkActionPerformed
