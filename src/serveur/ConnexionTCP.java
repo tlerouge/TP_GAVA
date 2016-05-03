@@ -21,14 +21,18 @@ public class ConnexionTCP extends ServeurThreadTCP {
                 String capitalizedSentence;
                 try {
                     BufferedReader inFromClient = new BufferedReader(new InputStreamReader(sck.getInputStream()));
-                    DataOutputStream outToClient = new DataOutputStream(sck.getOutputStream());
+//                    DataOutputStream outToClient = new DataOutputStream(sck.getOutputStream());
+                    
+                    PrintWriter outToClient = new PrintWriter(new BufferedWriter(new OutputStreamWriter(sck.getOutputStream())),true);
                     clientSentence = inFromClient.readLine();
                     System.out.println("Received: " + clientSentence);
                     if (noms.contains(clientSentence)) {
-                        outToClient.writeBytes("0");
+//                        outToClient.writeBytes("0");
+                        outToClient.println("0");
                     } else {
                         noms.add(clientSentence);
-                        outToClient.writeBytes("1");
+                        outToClient.println("1");
+//                        outToClient.writeBytes("1");
                     }
                 } catch (IOException exc) {
                     Logger.global.log(Level.SEVERE,"thread serv",exc) ;

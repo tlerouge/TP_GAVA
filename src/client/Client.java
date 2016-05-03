@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  */
 public class Client {
 
-    Socket sck;
+    private Socket sck;
     static int port;
     
     
@@ -30,7 +30,7 @@ public class Client {
      */
     public static void main(String[] args) {
         
-        Client.port=Integer.parseInt(args[0]);
+//        Client.port=Integer.parseInt(args[0]);
         
         ClientConnexionInterface connexionInterface = new ClientConnexionInterface();
         connexionInterface.setVisible(true);
@@ -39,7 +39,7 @@ public class Client {
     public boolean connect(String Nom){
        
         try {
-            sck = new Socket("127.0.0.1", port);
+            sck = new Socket("localhost", 9999);
             System.out.println("Connexion etabli");
             
             BufferedReader plec = new BufferedReader(new InputStreamReader(sck.getInputStream())); 

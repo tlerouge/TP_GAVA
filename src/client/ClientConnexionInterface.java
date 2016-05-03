@@ -91,6 +91,10 @@ public class ClientConnexionInterface extends javax.swing.JFrame {
         if (connexionAccepte.equals(false) ) {
             TextFieldNom.setText("Connexion refusée");
         }
+        else {
+            ClientNouvelleReservationInterface nouvelleReservation = new ClientNouvelleReservationInterface();
+            nouvelleReservation.setVisible(true);
+        }
                
         
     }//GEN-LAST:event_ButtonOkActionPerformed
