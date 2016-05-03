@@ -22,7 +22,7 @@ public class Client {
 
     private Socket sck;
     boolean sckFerme;   // flag pour savoir si la socket a déjà été fermé
-        
+    PrintWriter pred;
     
     /**
      * @param args the command line arguments
@@ -43,14 +43,14 @@ public class Client {
             
             BufferedReader plec = new BufferedReader(new InputStreamReader(sck.getInputStream())); 
             
-            PrintWriter pred = new PrintWriter(new BufferedWriter(new OutputStreamWriter(sck.getOutputStream())),true);
+            pred = new PrintWriter(new BufferedWriter(new OutputStreamWriter(sck.getOutputStream())),true);
 
             pred.println(Nom);
             
             String retour = plec.readLine();
             System.out.println(retour);
             plec.close();
-            pred.close();
+            //pred.close();
             
             if (retour.equals("1")){
                 sckFerme=false;
@@ -71,15 +71,15 @@ public class Client {
         
         if (sckFerme == false){
             
-            BufferedReader plec = new BufferedReader(new InputStreamReader(sck.getInputStream())); 
+            //BufferedReader plec = new BufferedReader(new InputStreamReader(sck.getInputStream())); 
             
-            PrintWriter pred = new PrintWriter(new BufferedWriter(new OutputStreamWriter(sck.getOutputStream())),true);
+            //PrintWriter pred2 = new PrintWriter(new BufferedWriter(new OutputStreamWriter(sck.getOutputStream())),true);
 
             pred.println("2");
             
-            String retour = plec.readLine();
-            System.out.println(retour);
-            plec.close();
+            //String retour = plec.readLine();
+            //System.out.println(retour);
+            //plec.close();
             pred.close();
             
             sck.close();

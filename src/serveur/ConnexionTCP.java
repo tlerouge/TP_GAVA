@@ -2,6 +2,7 @@ package serveur;
 
 import java.io.*;
 import java.net.*;
+import java.nio.Buffer;
 import java.util.ArrayList;
 import java.util.logging.*;
 
@@ -34,10 +35,20 @@ public class ConnexionTCP extends ServeurThreadTCP {
                         
                     } else {
                         noms.add(clientSentence);
-                        s.ajouterText(clientSentence);
+                        s.ajouterText("connexion de " + clientSentence);
                         outToClient.println("1");
 //                        outToClient.writeBytes("1");
                     }
+                    
+                   
+                    //BufferedReader inFromClient2 = new BufferedReader(new InputStreamReader(sck.getInputStream()));
+    //                    DataOutputStream outToClient = new DataOutputStream(sck.getOutputStream());
+                    String clientSentence2 = inFromClient.readLine();
+                    System.out.println("Closed: " + clientSentence2);
+                    if (clientSentence2.equals("2")) {
+                        noms.remove(clientSentence2);
+                    }
+                    
                 } catch (IOException exc) {
                     Logger.global.log(Level.SEVERE,"thread serv",exc) ;
                 }
