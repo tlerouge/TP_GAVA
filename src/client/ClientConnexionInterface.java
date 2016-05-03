@@ -5,13 +5,18 @@
  */
 package client;
 
+import java.io.IOException;
 import java.net.Socket;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Baptiste
  */
 public class ClientConnexionInterface extends javax.swing.JFrame {
+    
+    Client client;
     
     /**
      * Creates new form ClientConnexionInterface
@@ -46,6 +51,11 @@ public class ClientConnexionInterface extends javax.swing.JFrame {
         });
 
         ButtonQuitter.setText("Quitter");
+        ButtonQuitter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonQuitterActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -85,19 +95,28 @@ public class ClientConnexionInterface extends javax.swing.JFrame {
 
         Boolean connexionAccepte;
         
-        Client client = new Client();
+        client = new Client();
         connexionAccepte = client.connect(TextFieldNom.getText());
         
         if (connexionAccepte.equals(false) ) {
             TextFieldNom.setText("Connexion refusée");
         }
         else {
-            ClientNouvelleReservationInterface nouvelleReservation = new ClientNouvelleReservationInterface();
-            nouvelleReservation.setVisible(true);
-        }
-               
+            ClientListeReservationInterface listeReservation = new ClientListeReservationInterface(client);
+            listeReservation.setVisible(true);
+        }      
         
     }//GEN-LAST:event_ButtonOkActionPerformed
+
+    private void ButtonQuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonQuitterActionPerformed
+        try {
+            client.disconnect();
+        } catch (IOException ex) {
+            Logger.getLogger(ClientConnexionInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        this.dispose();
+    }//GEN-LAST:event_ButtonQuitterActionPerformed
 
     /**
      * @param args the command line arguments

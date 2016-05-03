@@ -21,9 +21,8 @@ import java.util.logging.Logger;
 public class Client {
 
     private Socket sck;
-    static int port;
-    
-    
+    boolean sckFerme;   // flag pour savoir si la socket a déjà été fermé
+    PrintWriter pred;
     
     /**
      * @param args the command line arguments
@@ -31,7 +30,7 @@ public class Client {
     public static void main(String[] args) {
         
 //        Client.port=Integer.parseInt(args[0]);
-        
+       
         ClientConnexionInterface connexionInterface = new ClientConnexionInterface();
         connexionInterface.setVisible(true);
     }
@@ -44,16 +43,17 @@ public class Client {
             
             BufferedReader plec = new BufferedReader(new InputStreamReader(sck.getInputStream())); 
             
-            PrintWriter pred = new PrintWriter(new BufferedWriter(new OutputStreamWriter(sck.getOutputStream())),true);
+            pred = new PrintWriter(new BufferedWriter(new OutputStreamWriter(sck.getOutputStream())),true);
 
             pred.println(Nom);
             
             String retour = plec.readLine();
             System.out.println(retour);
             plec.close();
-            pred.close();
+            //pred.close();
             
             if (retour.equals("1")){
+                sckFerme=false;
                 System.out.println("Connexion accepté");
                 return true;
             }
@@ -67,10 +67,26 @@ public class Client {
         } 
     }
         
-    public void disconnect () throws IOException{
+    public void disconnect() throws IOException{
+        
+        if (sckFerme == false){
+            
+            //BufferedReader plec = new BufferedReader(new InputStreamReader(sck.getInputStream())); 
+            
+            //PrintWriter pred2 = new PrintWriter(new BufferedWriter(new OutputStreamWriter(sck.getOutputStream())),true);
 
-        sck.close();
-        System.out.println("Connexion fermé");
+            pred.println("2");
+            
+            //String retour = plec.readLine();
+            //System.out.println(retour);
+            //plec.close();
+            pred.close();
+            
+            sck.close();
+            sckFerme=true;
+            System.out.println("Connexion fermé");
+        }
+        else System.out.println("Connexion déjà fermé");
     }
     
 }
