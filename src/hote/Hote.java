@@ -1,21 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package hote;
 
-/**
- *
- * @author Baptiste
- */
+import java.io.IOException;
+import java.net.Socket;
+
 public class Hote {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Socket socket;
+        
+        HoteConnexionInterface h = new HoteConnexionInterface();
+        h.setVisible(true);
+        
+	try {
+            //socket = new Socket("localhost",Integer.parseInt(args[0]));
+             socket = new Socket("localhost",9999);
+            socket.close();
+	} catch (IOException e) {
+            e.printStackTrace();
+	}
     }
     
 }
