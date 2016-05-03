@@ -16,6 +16,7 @@ public class ServeurInterface extends javax.swing.JFrame {
      */
     public ServeurInterface() {
         initComponents();
+        this.setVisible(true);
     }
 
     /**
@@ -91,7 +92,11 @@ public class ServeurInterface extends javax.swing.JFrame {
             }
         });
     }
-
+    
+    public void ajouterText(String s) {
+        jTextArea1.append(s + "\n");
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
