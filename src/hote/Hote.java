@@ -25,7 +25,7 @@ public class Hote {
        
         try {
             socket = new Socket("localhost", 9999);
-            System.out.println("Connexion etabli");
+            System.out.println("Communication établie");
             
             BufferedReader plec = new BufferedReader(new InputStreamReader(socket.getInputStream())); 
             
@@ -43,6 +43,7 @@ public class Hote {
                 return true;
             }
             else {
+                System.out.println("Connexion refusé");
                 return false;
             } 
             
