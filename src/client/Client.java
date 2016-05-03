@@ -70,6 +70,18 @@ public class Client {
     public void disconnect() throws IOException{
         
         if (sckFerme == false){
+            
+            BufferedReader plec = new BufferedReader(new InputStreamReader(sck.getInputStream())); 
+            
+            PrintWriter pred = new PrintWriter(new BufferedWriter(new OutputStreamWriter(sck.getOutputStream())),true);
+
+            pred.println("2");
+            
+            String retour = plec.readLine();
+            System.out.println(retour);
+            plec.close();
+            pred.close();
+            
             sck.close();
             sckFerme=true;
             System.out.println("Connexion fermé");
